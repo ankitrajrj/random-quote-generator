@@ -1,0 +1,283 @@
+/* Disclaimer by Ankit Raj 
+   This project contains comments in HTML, CSS, and JavaScript files to help understand why each part is used. 
+   The comments explain the purpose of different sections, making it easier to learn and modify the code. 
+   Feel free to explore and improve the project! Happy coding! 😊 */
+
+/* Import Google Font - Poppins */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  /* background: #79c2d0; */
+  transition: background-image 1s ease;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+/* Add overlay for better readability on different backgrounds */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: -1;
+}
+
+.wrapper {
+  width: 605px;
+  background: rgba(69, 93, 122, 0.7); /* Changed from 0.9 to 0.7 for more transparency */
+  border-radius: 15px;
+  padding: 30px 30px 25px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(5px);
+}
+
+.wrapper header {
+  font-size: 35px;
+  font-weight: 600;
+  text-align: center;
+  color: #111111;
+}
+
+.wrapper .content {
+  margin: 35px 0;
+}
+
+.content .quote-area {
+  display: flex;
+  justify-content: center;
+}
+
+.quote-area i {
+  font-size: 15px;
+  color: #fff;
+}
+
+.quote-area i:first-child {
+  margin: 3px 10px 0 0;
+}
+
+.quote-area i:last-child {
+  margin: 0 0 3px 10px;
+  display: flex;
+  align-items: flex-end;
+}
+
+.quote-area .quote {
+  font-size: 22px;
+  text-align: center;
+  word-break: break-word;
+  color: #111111;
+}
+
+.content .author {
+  display: flex;
+  font-size: 18px;
+  font-style: italic;
+  margin-top: 20px;
+  justify-content: flex-end;
+  color: #fff;
+}
+
+.author span:first-child {
+  margin: -7px 5px 0 0;
+  font-family: monospace;
+}
+
+.wrapper .buttons {
+  border-top: 1px solid #ccc;
+}
+
+.buttons .features {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+  justify-content: space-between;
+}
+
+.features ul {
+  display: flex;
+}
+
+.features ul li {
+  list-style: none;
+  margin: 0 5px;
+  height: 47px;
+  width: 47px;
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 2px solid #53a8b6;
+  transition: all 0.4s ease;
+  color: #fff;
+}
+
+.features ul li:hover {
+  color: #fff;
+  background: #000;
+}
+
+.features button {
+  border: none;
+  outline: none;
+  color: #fff;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 13px 22px;
+  border-radius: 30px;
+  background: #53a8b6;
+  transition: background 0.3s ease;
+}
+
+.features button:hover {
+  background: #000;
+}
+
+button.loading {
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+/* Loading counter styles */
+#loading-counter {
+  display: inline-block;
+  margin-left: 5px;
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  line-height: 20px;
+  text-align: center;
+  font-size: 14px;
+}
+
+/* Tooltip styles */
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: #000;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -60px;
+  opacity: 0;
+  transition: opacity 0.3s;
+  font-size: 12px;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
+#export-btn {
+  margin-left: 10px;
+  background: #5a8f29;
+}
+
+#export-btn:hover {
+  background: #000;
+}
+
+/* Canvas for export functionality */
+#quote-canvas {
+  display: none;
+}
+
+.notify {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  display: none;
+  z-index: 100;
+}
+
+@media (max-width: 768px) {
+  .wrapper {
+    width: 90%;
+    padding: 20px;
+  }
+
+  .wrapper header {
+    font-size: 28px;
+  }
+
+  .quote-area .quote {
+    font-size: 18px;
+  }
+
+  .content .author {
+    font-size: 16px;
+  }
+
+  .features ul li {
+    width: 40px;
+    height: 40px;
+    font-size: 14px;
+  }
+
+  .features button {
+    font-size: 14px;
+    padding: 10px 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .wrapper {
+    width: 95%;
+    padding: 15px;
+  }
+
+  .wrapper header {
+    font-size: 24px;
+  }
+
+  .quote-area .quote {
+    font-size: 16px;
+  }
+
+  .content .author {
+    font-size: 14px;
+  }
+
+  .features ul li {
+    width: 35px;
+    height: 35px;
+    font-size: 12px;
+  }
+
+  .features button {
+    font-size: 12px;
+    padding: 8px 15px;
+  }
+}
