@@ -4,7 +4,7 @@ A Random Quote Generator website that displays a new motivational or inspiration
 
 <h5 style="text-align: center;">Random Quote Generator Preview</h5>
 
-<img src="random-quote-generator-preview/preview-image.png" alt="Mood Tracker Preview ">
+<img src="random-quote-generator-preview/preview-image.png" alt="Random Quote Generator Preview">
 
 
 ### 1. What is used in this project?  
